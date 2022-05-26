@@ -1,0 +1,24 @@
+.signup-container {
+  width: 80%;
+  margin: auto;
+}
+
+form {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+form h1 {
+  text-align: center;
+}
+
+form button {
+  margin: auto;
+  margin-top: 2rem;
+  width: 100%;
+}

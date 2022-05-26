@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span><a routerLink="/">Movies App</a></span>
+  <span class="example-spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated"><a mat-button class="add-button"
+    routerLink="/create" routerLinkActive="mat-accent">Add Movie</a></li>
+    <li *ngIf="!userIsAuthenticated"><a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a></li>
+    <li *ngIf="!userIsAuthenticated"><a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a></li>
+    <li *ngIf="userIsAuthenticated"><button mat-button (click)="onLogout()">Logout</button></li>
+  </ul>
+</mat-toolbar>

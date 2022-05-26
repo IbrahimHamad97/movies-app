@@ -1,0 +1,19 @@
+
+<div class="movies-container" *ngIf="movies.length > 0">
+  <div class="movie-card" *ngFor="let movie of movies">
+    <div>
+      <img [src]="movie.imagePath" [alt]="movie.title"/>
+    </div>
+    <div class="movie-info">
+      <h1>{{ movie.title }}</h1>
+      <p>{{ movie.content }}</p>
+    </div>
+    <div class="movie-buttons">
+      <a mat-button [routerLink]="['/view', movie.id]">View</a>
+      <a *ngIf="userIsAuthenticated && userId === movie.creator" mat-button color="primary" [routerLink]="['/edit', movie.id]">EDIT</a>
+      <button *ngIf="userIsAuthenticated && userId === movie.creator" mat-raised-button color="warn" (click)="onDelete(movie.id)">Delete</button>
+    </div>
+  </div>
+</div>
+<p class="info-text mat-body-1" *ngIf="movies.length <= 0">No movies added yet!</p>
+
