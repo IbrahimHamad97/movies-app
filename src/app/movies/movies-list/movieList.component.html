@@ -1,4 +1,3 @@
-
 <div class="movies-container" *ngIf="movies.length > 0">
   <div class="movie-card" *ngFor="let movie of movies">
     <div>
@@ -6,12 +5,20 @@
     </div>
     <div class="movie-info">
       <h1>{{ movie.title }}</h1>
-      <p>{{ movie.content }}</p>
+      <p>Movie Rating : {{ movie.rating }}/5</p>
+      <mat-slider *ngIf="userIsAuthenticated" thumbLabel class="rating-slider"
+       min="1" max="5" step="1" (change)="onRateChange($event)"></mat-slider>
     </div>
-    <div class="movie-buttons">
+    <div class="movie-buttons-1">
       <a mat-button [routerLink]="['/view', movie.id]">View</a>
-      <a *ngIf="userIsAuthenticated && userId === movie.creator" mat-button color="primary" [routerLink]="['/edit', movie.id]">EDIT</a>
-      <button *ngIf="userIsAuthenticated && userId === movie.creator" mat-raised-button color="warn" (click)="onDelete(movie.id)">Delete</button>
+      <button *ngIf="userIsAuthenticated" mat-raised-button color="accent"
+       (click)="onRate(movie.id)">Rate</button>
+    </div>
+    <div class="movie-buttons-2">
+      <a *ngIf="userIsAuthenticated && userId === movie.creator"
+       mat-raised-button color="primary" [routerLink]="['/edit', movie.id]">EDIT</a>
+      <button *ngIf="userIsAuthenticated && userId === movie.creator"
+       mat-raised-button color="warn" (click)="onDelete(movie.id)">Delete</button>
     </div>
   </div>
 </div>

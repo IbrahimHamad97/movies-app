@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Movie } from "../movie.model";
 import { MoviesService } from "../movie.services";
 
-
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-detail.component.html',
@@ -22,7 +21,8 @@ export class MovieDetailsComponent implements OnInit {
       this.moviesService.getMovie(this.movieID).subscribe(movieData => {
         this.movie = {id: movieData._id, title: movieData.title,
            content: movieData.content, imagePath: movieData.imagePath,
-            creator: movieData.creator};
+            creator: movieData.creator, rating: movieData.rating,
+             ratingsList: movieData.ratingsList};
       });
     })
   }

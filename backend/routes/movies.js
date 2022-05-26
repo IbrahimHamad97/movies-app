@@ -33,8 +33,9 @@ router.post(
       title: req.body.title,
       content: req.body.content,
       imagePath: url + "/images/" + req.file.filename,
-      rating: 0,
       creator: req.userData.userId,
+      rating: 0,
+      ratingLimit: [],
     });
     movie.save().then((createdMovie) => {
       res.status(201).json({
@@ -50,7 +51,7 @@ router.post(
 
 router.delete("/:id", checkAuth, (req, res, next) => {
   Movie.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(
-    (result) => {
+    () => {
       res.status(200).json({ message: "Deletion successful!" });
     }
   );
@@ -76,7 +77,24 @@ router.put(
     Movie.updateOne(
       { _id: req.params.id, creator: req.userData.userId },
       movie
-    ).then((result) => {
+    ).then(() => {
+      res.status(200).json({ message: "success" });
+    });
+  }
+);
+
+router.patch(
+  "/:id",
+  checkAuth,
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    Movie.updateOne(
+      { _id: req.params.id },
+      {
+        rating: req.body.rating,
+        ratingsList: req.body.ratingsList,
+      }
+    ).then(() => {
       res.status(200).json({ message: "success" });
     });
   }

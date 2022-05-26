@@ -18,6 +18,20 @@ const movieSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
+  rating: {
+    type: Number,
+    required: true,
+  },
+  ratingsList: [
+    {
+      rated: {
+        type: Number,
+      },
+      rater: {
+        type: String,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Movie", movieSchema);

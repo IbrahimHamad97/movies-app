@@ -33,14 +33,35 @@ img {
   padding-right: 10px;
 }
 
-.movie-buttons {
+.movie-buttons-1 {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+}
+
+.movie-buttons-2 {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-buttons-1 button, a, .movie-buttons-2 button, a {
+  width: 100%;
+}
+
+.movie-buttons-1 button, .movie-buttons-2 button {
+  margin-left: 10px;
+}
+
+.movie-buttons-1 a, .movie-buttons-2 a {
+  margin-right: 10px;
 }
 
 .info-text {
   text-align: center;
+}
+
+.rating-slider {
+  width: 100%;
 }
 
 

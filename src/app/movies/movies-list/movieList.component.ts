@@ -17,6 +17,8 @@ export class MovieListComponent implements OnInit {
   private authStatusSub: Subscription;
   userIsAuthenticated = false;
   userId: string;
+  rateValue: number = 1;
+  movie: Movie;
 
   constructor(public moviesService: MoviesService,
      private authService: AuthService) {}
@@ -34,10 +36,22 @@ export class MovieListComponent implements OnInit {
       this.userIsAuthenticated = isAuthenticated;
       this.userId = this.authService.getUserId();
     });
+    this.moviesService.getMovieRate().subscribe(
+
+    );
   }
 
   onDelete(movieID: string) {
     this.moviesService.deleteMovie(movieID);
+  }
+
+  onRateChange(event: any) {
+    this.rateValue = event.value;
+  }
+
+  onRate(movieID: string) {
+    this.userId = this.authService.getUserId();
+    this.moviesService.rateMovie(movieID, this.rateValue, this.userId);
   }
 
   ngOnDestroy() {

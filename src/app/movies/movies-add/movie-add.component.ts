@@ -35,7 +35,8 @@ export class MovieCreateComponent implements OnInit {
           this.moviesService.getMovie(this.movieID).subscribe(movieData => {
             this.movie = {id: movieData._id, title: movieData.title,
                content: movieData.content, imagePath: movieData.imagePath,
-                creator: movieData.creator};
+                creator: movieData.creator, rating: movieData.rating,
+                ratingsList: movieData.ratingsList};
             this.form.setValue({'title': this.movie.title,
              'content': this.movie.content, 'image': this.movie.imagePath});
           });
@@ -67,7 +68,7 @@ export class MovieCreateComponent implements OnInit {
     }
     else {
       this.moviesService.updateMovie(this.movieID, this.form.value.title,
-         this.form.value.content, this.form.value.image);
+         this.form.value.content, this.form.value.image, this.movie.rating, this.movie.ratingsList);
     }
     this.form.reset();
   }

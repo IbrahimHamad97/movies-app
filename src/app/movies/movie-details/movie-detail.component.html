@@ -4,12 +4,11 @@
   </div>
   <div class="details-info">
     <h1>{{movie.title}}</h1>
-    <h1>Movie Rating: 4/5</h1>
+    <h1>Movie Rating: {{movie.rating}}</h1>
     <h1>{{movie.content}}</h1>
   </div>
 </div>
 <h1 class="ratings-header">Ratings Report:</h1>
-<div class="ratings-container">
-
-    <h1>User brho has rated this movie 5/10</h1>
+<div class="ratings-container" *ngFor="let rating of movie.ratingsList">
+    <p> {{rating.rater}} gave this movie a {{rating.rated}}</p>
 </div>

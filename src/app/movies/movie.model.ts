@@ -4,4 +4,6 @@ export interface Movie {
   content: string;
   imagePath: string;
   creator: string;
+  rating: number,
+  ratingsList: Array<any>;
 }
